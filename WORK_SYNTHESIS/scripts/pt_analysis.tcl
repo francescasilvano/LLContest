@@ -36,7 +36,7 @@ suppress_message CMD-041
 ##
 ######################################################################
 # DEFINE CIRCUITS
-set blockName "aes_cipher_top"
+set blockName "c1908"
 
 # DEFINE INPUT FILES
 set dir "./saved/${blockName}/synthesis"
@@ -47,6 +47,8 @@ set in_sdc_filename "${dir}/${blockName}_postsyn.sdc"
 read_verilog $in_verilog_filename
 read_sdc -version 1.3 $in_sdc_filename
 
+set_user_attribute [find library CORE65LPLVT] default_threshold_voltage_group LVT
+set_user_attribute [find library CORE65LPHVT] default_threshold_voltage_group HVT
 
 update_timing -full
 
