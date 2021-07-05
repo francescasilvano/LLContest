@@ -118,4 +118,4 @@ write_sdc -version 1.3 "${dirname}/${blockName}_postsyn.sdc"
 ######################################################################
 
 exec rm -rf $libDir
-exit
+#exit
