@@ -97,8 +97,8 @@ source "./scripts/power_feature.tcl"
 link
 ungroup -all -flatten
 
-compile_ultra
-
+compile_ultra -gate_clock
+ 
 optimize_registers -clock $clockName -minimum_period_only
 set_fix_hold $clockName
 compile -incremental_mapping -map_effort high -ungroup_all
