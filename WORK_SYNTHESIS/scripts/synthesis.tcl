@@ -44,7 +44,7 @@ suppress_message RTDC-126
 ######################################################################
 
 # DEFINE CIRCUITS and WORK DIRS
-set blockName "aes_cipher_top"
+set blockName "c1908"
 set active_design $blockName
 
 # DEFINE WORK DIRS
@@ -78,8 +78,8 @@ elaborate -lib $blockName $blockName
 ## DEFINE DESIGN ENVIRONMENT
 ##
 ######################################################################
-set_operating_condition -library  "${target_library}:CORE65LPSVT" nom_1.20V_25C
-set_wire_load_model -library "${target_library}:CORE65LPSVT" -name area_12Kto18K [find design *]
+set_operating_condition -library "[lindex $target_library 0]:CORE65LPLVT" nom_1.20V_25C
+set_wire_load_model -library "[lindex $target_library 0]:CORE65LPLVT" ….
 set_load 0.05 [all_outputs]
 
 ######################################################################
@@ -88,7 +88,7 @@ set_load 0.05 [all_outputs]
 ##
 ######################################################################
 source "./rtl/${blockName}/sdc/${blockName}.sdc"
-
+source "./scripts/power_feature.tcl"
 ######################################################################
 ##
 ## OPTIMIZE DESIGN
@@ -97,7 +97,7 @@ source "./rtl/${blockName}/sdc/${blockName}.sdc"
 link
 ungroup -all -flatten
 
-compile
+compile_ultra
 
 optimize_registers -clock $clockName -minimum_period_only
 set_fix_hold $clockName
