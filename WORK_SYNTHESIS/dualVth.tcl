@@ -5,7 +5,12 @@ proc dualVth {args} {
 	#################################
 	### INSERT YOUR COMMANDS HERE ###
 	#################################
-
+	
+	#check if the slack is ok!
+	if {$allowed_slack >0} {
+   		return
+  	}
+	
 	return
 }
 
