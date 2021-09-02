@@ -38,7 +38,13 @@ proc dualVth {args} {
 	}
 	return
 }
-
+proc control {args} {
+	set path [get_timing_paths] 
+  	set slack [get_attribute $path slack] 
+	if {$slack < $allowed_slack}
+		return -1
+	else return 0
+}
 define_proc_attributes dualVth \
 -info "Post-Synthesis Dual-Vth Cell Assignment and Gate Re-Sizing" \
 -define_args \
