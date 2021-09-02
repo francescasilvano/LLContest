@@ -32,7 +32,7 @@ proc dualVth {args} {
 	#take each cell and swap it from hvt in lvt
 	foreach cell $cells_to_control {
 	################### IMPORTANT
-	#changing the sizing the power consumption decrease but the delay increase
+	#reducing the sizing the power consumption decrease but the delay increase
 	#changing from lvt->hvt reducing th leackage power consumption and increase the delay
 	# control the slack 
 	}
