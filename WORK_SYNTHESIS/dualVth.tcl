@@ -10,22 +10,19 @@ proc dualVth {args} {
 	if {$allowed_slack >0} {
    		return
   	}
-	#take all the cell and delete the cell of the critical path
-	set all_cells [get_cells]
-	######### DA MODIFICARE QUANDO ARRIVERà LA PARTE DI NICO########
-	set worst_path 0
-	foreach cell $worst_path {
-		set index [lsearch $all_cells $cell]
-		set $all_cells [lreplace $all_cell $index $index]
+	#take the critical path
+	set critical_path [get_timing_paths]
+	set cells_critical_path [get_attribute $critical_path points]
+	set cell_leackage ""
+	foreach_in_collection point $cells_critical_path {
+		set cell [get_attribute $point object]
+		lappend cell_leackage [list $cell [get_attribute $cell leackage_power]]
 	}
-	################################################################
 	#order list
 	#prendo una lista a parte la ordino lista fatta da ogni cella e la leackage_power
-	foreach cell $all_cells {
-		lappend order_cells [list $cell [get_attribute $cell leackage_power]]
-	}
-	lsort -index 1 $order_cells
-	foreach element $order_cells {
+	lsort -index 1 $cell_leackage
+	set cells_to_control ""
+	foreach element cell_leackage {
 		set element [lreplace $element 1 1]
 		lappend cells_to_control $element
 	}
@@ -36,9 +33,18 @@ proc dualVth {args} {
 	#changing from lvt->hvt reducing th leackage power consumption and increase the delay
 	# control the slack 
 	}
+	#take the best path
+	set paths [get_path_groups]
+	set bestpaths ""
+	foreach path $paths {
+		lappend bestpaths [list $path [get_attribute time_lent_to_startpoint]]
+	}
+	lsort -index 1 $bestpaths
+	set element [lindex $bestpaths 0]
+	set bestpath [lindex $element 0]
 	return
 }
-proc control {args} {
+proc control {allowed_slack} {
 	set path [get_timing_paths] 
   	set slack [get_attribute $path slack] 
 	if {$slack < $allowed_slack}
