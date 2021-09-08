@@ -13,11 +13,19 @@ proc dualVth {args} {
 	#take the critical path
 	set critical_path [get_timing_paths]
 	set cells_critical_path [get_attribute $critical_path points]
-	set cell_leackage ""
+	set objs ""
 	foreach_in_collection point $cells_critical_path {
-		set cell [get_attribute $point object]
-		lappend cell_leackage [list $cell [get_attribute $cell leackage_power]]
+		lappend objs [get_attribute $point object]
 	}
+    set cells [get_cells -of_objects $objs]
+    set cell_leackage ""
+    puts "Worst path"
+    foreach cell $cells {
+        set name [get_attribute $cell ref_name]
+        puts $name
+        lappend cell_leackage [list $cell [get_attribute $cell leackage_power]]
+    }
+
 	#order list
 	#prendo una lista a parte la ordino lista fatta da ogni cella e la leackage_power
 	lsort -index 1 $cell_leackage
