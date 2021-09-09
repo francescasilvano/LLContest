@@ -24,7 +24,7 @@ while {$flag} {
                 
                 set leakage_power [get_attribute $cell leakage_power]
 
-                puts "$cell_name - $leakage_power - [get_attribute $cell ref_name] - $dual"
+                # puts "$cell_name - $leakage_power - [get_attribute $cell ref_name] - $dual"
 
                 if { $dual == "LL" || $dual == "LLS"} {
                     if {$leakage_power > $leakage_power_swap} {
@@ -67,8 +67,8 @@ while {$flag} {
         } 
 
         # se la cella non può essere sostituita
-          set lib_cell_name [get_attribute [get_lib_cells -of_object $cell_to_swap] full_name]
-        puts "FIRST: $lib_cell_name -- THEN: $newcell => [get_attribute $cell_to_swap full_name]"
+        set lib_cell_name [get_attribute [get_lib_cells -of_object $cell_to_swap] full_name]
+        # puts "FIRST: $lib_cell_name -- THEN: $newcell => [get_attribute $cell_to_swap full_name]"
         if { $newcell != 0} {
             size_cell $cell_to_swap $newcell
             set wrt_path_collection [get_timing_paths] 
