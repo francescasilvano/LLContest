@@ -97,7 +97,7 @@ source "./scripts/power_feature.tcl"
 link
 ungroup -all -flatten
 
-compile_ultra -gate_clock
+compile_ultra
  
 optimize_registers -clock $clockName -minimum_period_only
 set_fix_hold $clockName

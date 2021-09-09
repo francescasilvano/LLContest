@@ -1,0 +1,228 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : O-2018.06-SP4
+// Date      : Thu Sep  9 14:50:10 2021
+/////////////////////////////////////////////////////////////
+
+
+module c1908 ( N1, N4, N7, N10, N13, N16, N19, N22, N25, N28, N31, N34, N37, 
+        N40, N43, N46, N49, N53, N56, N60, N63, N66, N69, N72, N76, N79, N82, 
+        N85, N88, N91, N94, N99, N104, N2753, N2754, N2755, N2756, N2762, 
+        N2767, N2768, N2779, N2780, N2781, N2782, N2783, N2784, N2785, N2786, 
+        N2787, N2811, N2886, N2887, N2888, N2889, N2890, N2891, N2892, N2899
+ );
+  input N1, N4, N7, N10, N13, N16, N19, N22, N25, N28, N31, N34, N37, N40, N43,
+         N46, N49, N53, N56, N60, N63, N66, N69, N72, N76, N79, N82, N85, N88,
+         N91, N94, N99, N104;
+  output N2753, N2754, N2755, N2756, N2762, N2767, N2768, N2779, N2780, N2781,
+         N2782, N2783, N2784, N2785, N2786, N2787, N2811, N2886, N2887, N2888,
+         N2889, N2890, N2891, N2892, N2899;
+  wire   n335, n169, n170, n171, n172, n175, n176, n177, n178, n179, n180,
+         n181, n182, n183, n184, n185, n186, n187, n188, n189, n190, n191,
+         n192, n193, n194, n195, n196, n197, n198, n199, n200, n201, n202,
+         n203, n204, n205, n206, n207, n208, n209, n210, n211, n212, n213,
+         n214, n215, n216, n217, n218, n219, n220, n221, n222, n223, n224,
+         n225, n226, n227, n228, n229, n230, n231, n232, n233, n234, n235,
+         n236, n237, n238, n239, n240, n241, n242, n243, n244, n245, n246,
+         n247, n248, n249, n250, n251, n252, n253, n254, n255, n256, n257,
+         n258, n259, n260, n261, n262, n263, n264, n265, n266, n267, n268,
+         n269, n270, n271, n272, n273, n274, n275, n276, n277, n278, n279,
+         n280, n281, n282, n283, n284, n285, n286, n287, n288, n289, n290,
+         n291, n292, n293, n294, n295, n296, n297, n298, n299, n300, n301,
+         n302, n303, n304, n305, n306, n307, n308, n309, n310, n311, n312,
+         n313, n314, n315, n316, n317, n318, n319, n320, n321, n322, n323,
+         n324, n325, n326, n327, n328, n329, n330, n331, n332, n333, n334;
+
+  HS65_LL_NOR2AX3 U179 ( .A(n222), .B(n301), .Z(n320) );
+  HS65_LL_AND2X4 U180 ( .A(n230), .B(n228), .Z(n309) );
+  HS65_LLS_XNOR2X3 U181 ( .A(n208), .B(n207), .Z(n209) );
+  HS65_LL_XNOR2X4 U182 ( .A(N19), .B(n197), .Z(n218) );
+  HS65_LL_NOR2AX3 U183 ( .A(n228), .B(n230), .Z(n302) );
+  HS65_LL_AOI12X2 U184 ( .A(n301), .B(n300), .C(n314), .Z(n313) );
+  HS65_LL_MUX21X4 U185 ( .D0(n334), .D1(n333), .S0(n332), .Z(n169) );
+  HS65_LL_XNOR2X9 U188 ( .A(n265), .B(n264), .Z(n266) );
+  HS65_LL_NOR2X13 U190 ( .A(n303), .B(n225), .Z(n227) );
+  HS65_LL_NAND2X5 U191 ( .A(N49), .B(n270), .Z(n264) );
+  HS65_LL_OAI211X22 U192 ( .A(n324), .B(n323), .C(n322), .D(n321), .Z(N2811)
+         );
+  HS65_LL_NOR2X19 U193 ( .A(n254), .B(n321), .Z(n270) );
+  HS65_LL_NAND2X4 U194 ( .A(N22), .B(n172), .Z(n171) );
+  HS65_LL_NAND2X5 U195 ( .A(n227), .B(n317), .Z(n288) );
+  HS65_LL_NAND2X5 U196 ( .A(n308), .B(n226), .Z(n285) );
+  HS65_LL_NAND2X4 U197 ( .A(n325), .B(n326), .Z(n170) );
+  HS65_LL_NAND2X5 U198 ( .A(n309), .B(n226), .Z(n286) );
+  HS65_LL_NOR2X3 U199 ( .A(n275), .B(n280), .Z(n252) );
+  HS65_LL_NAND3X5 U200 ( .A(n320), .B(n318), .C(n251), .Z(n283) );
+  HS65_LL_NAND3X5 U202 ( .A(n246), .B(n318), .C(n245), .Z(n287) );
+  HS65_LL_IVX4 U203 ( .A(n250), .Z(n251) );
+  HS65_LL_NOR2X5 U204 ( .A(n323), .B(n225), .Z(n226) );
+  HS65_LL_NOR2X5 U205 ( .A(n247), .B(n231), .Z(n278) );
+  HS65_LL_AOI21X2 U206 ( .A(n305), .B(n304), .C(n303), .Z(n306) );
+  HS65_LL_NOR2X5 U207 ( .A(n249), .B(n248), .Z(n280) );
+  HS65_LL_IVX4 U208 ( .A(n302), .Z(n303) );
+  HS65_LL_IVX7 U209 ( .A(n237), .Z(n300) );
+  HS65_LL_NAND2X4 U210 ( .A(n230), .B(n229), .Z(n244) );
+  HS65_LL_NAND3X5 U211 ( .A(n241), .B(n302), .C(n240), .Z(n249) );
+  HS65_LL_IVX9 U212 ( .A(n224), .Z(n241) );
+  HS65_LL_NOR2X6 U213 ( .A(n230), .B(n228), .Z(n308) );
+  HS65_LLS_XOR2X6 U214 ( .A(n219), .B(n328), .Z(n265) );
+  HS65_LLS_XNOR2X3 U216 ( .A(n198), .B(n218), .Z(n202) );
+  HS65_LL_NAND2X5 U217 ( .A(n204), .B(N60), .Z(n222) );
+  HS65_LLS_XNOR2X3 U218 ( .A(N7), .B(n175), .Z(n179) );
+  HS65_LLS_XNOR2X3 U219 ( .A(N1), .B(n196), .Z(n198) );
+  HS65_LLS_XNOR2X3 U220 ( .A(N4), .B(n180), .Z(n184) );
+  HS65_LLS_XNOR2X3 U221 ( .A(N37), .B(n187), .Z(n192) );
+  HS65_LL_IVX7 U222 ( .A(n305), .Z(n236) );
+  HS65_LL_NAND3X3 U223 ( .A(N69), .B(N56), .C(n330), .Z(n175) );
+  HS65_LL_NAND3X5 U224 ( .A(N99), .B(n330), .C(n212), .Z(n314) );
+  HS65_LL_NAND2X5 U226 ( .A(N69), .B(n254), .Z(n204) );
+  HS65_LL_IVX7 U228 ( .A(N94), .Z(n254) );
+  HS65_LL_NAND2X4 U229 ( .A(N69), .B(N72), .Z(n212) );
+  HS65_LL_IVX4 U230 ( .A(N76), .Z(n211) );
+  HS65_LLS_XNOR2X6 U231 ( .A(n259), .B(n258), .Z(n260) );
+  HS65_LLS_XNOR2X6 U232 ( .A(n262), .B(n261), .Z(n263) );
+  HS65_LLS_XNOR2X6 U233 ( .A(n256), .B(n255), .Z(n257) );
+  HS65_LL_BFX18 U234 ( .A(n335), .Z(N2892) );
+  HS65_LLS_XNOR2X6 U235 ( .A(n272), .B(n271), .Z(n273) );
+  HS65_LL_NAND2X5 U236 ( .A(N76), .B(n270), .Z(n261) );
+  HS65_LL_NAND2X5 U237 ( .A(N56), .B(n270), .Z(n258) );
+  HS65_LL_NAND2X5 U238 ( .A(N82), .B(n270), .Z(n267) );
+  HS65_LL_NAND2X5 U239 ( .A(N85), .B(n270), .Z(n255) );
+  HS65_LL_NAND2X5 U240 ( .A(N79), .B(n270), .Z(n271) );
+  HS65_LL_NAND4ABX6 U242 ( .A(n278), .B(n233), .C(n288), .D(n232), .Z(n327) );
+  HS65_LL_NAND4ABX3 U243 ( .A(n282), .B(n289), .C(n286), .D(n285), .Z(n233) );
+  HS65_LL_NAND4ABX3 U244 ( .A(n276), .B(n281), .C(n284), .D(n287), .Z(n253) );
+  HS65_LL_NOR2X3 U245 ( .A(n277), .B(n325), .Z(n232) );
+  HS65_LL_NOR3X1 U246 ( .A(n314), .B(n311), .C(n310), .Z(n312) );
+  HS65_LL_NOR2X5 U247 ( .A(n239), .B(n248), .Z(n276) );
+  HS65_LL_NOR2X5 U248 ( .A(n249), .B(n231), .Z(n282) );
+  HS65_LL_NOR2X5 U249 ( .A(n239), .B(n231), .Z(n277) );
+  HS65_LL_NAND2X5 U250 ( .A(n223), .B(n237), .Z(n225) );
+  HS65_LL_NAND2X5 U251 ( .A(n309), .B(n317), .Z(n239) );
+  HS65_LL_NAND2X5 U252 ( .A(n246), .B(n243), .Z(n250) );
+  HS65_LL_NAND2X5 U253 ( .A(n308), .B(n317), .Z(n247) );
+  HS65_LL_NAND3AX6 U254 ( .A(n238), .B(n237), .C(n307), .Z(n248) );
+  HS65_LL_NOR2X3 U255 ( .A(n238), .B(n235), .Z(n243) );
+  HS65_LL_AND2X4 U256 ( .A(n222), .B(n301), .Z(n237) );
+  HS65_LL_IVX7 U257 ( .A(n318), .Z(n240) );
+  HS65_LL_NAND2X11 U258 ( .A(n236), .B(n304), .Z(n235) );
+  HS65_LL_NAND2X5 U259 ( .A(n224), .B(n318), .Z(n323) );
+  HS65_LLS_XNOR2X6 U260 ( .A(n221), .B(n220), .Z(n304) );
+  HS65_LL_NOR2X5 U261 ( .A(N94), .B(n272), .Z(n203) );
+  HS65_LL_NOR2X5 U262 ( .A(N94), .B(n262), .Z(n210) );
+  HS65_LL_NOR2X6 U263 ( .A(N94), .B(n265), .Z(n220) );
+  HS65_LL_NOR2X5 U264 ( .A(N94), .B(n259), .Z(n193) );
+  HS65_LL_NOR2X5 U265 ( .A(N94), .B(n256), .Z(n186) );
+  HS65_LL_NAND2X5 U266 ( .A(n254), .B(n268), .Z(n185) );
+  HS65_LLS_XNOR2X6 U267 ( .A(n291), .B(n209), .Z(n262) );
+  HS65_LLS_XNOR2X6 U268 ( .A(n202), .B(n201), .Z(n272) );
+  HS65_LLS_XNOR2X3 U269 ( .A(n292), .B(n291), .Z(n295) );
+  HS65_LLS_XNOR2X3 U270 ( .A(n177), .B(n199), .Z(n178) );
+  HS65_LLS_XNOR2X3 U271 ( .A(n190), .B(n189), .Z(n191) );
+  HS65_LLS_XNOR2X6 U272 ( .A(n184), .B(n183), .Z(n268) );
+  HS65_LLS_XNOR2X6 U273 ( .A(n206), .B(n216), .Z(n207) );
+  HS65_LLS_XNOR2X3 U274 ( .A(n182), .B(n189), .Z(n183) );
+  HS65_LLS_XNOR2X3 U275 ( .A(n188), .B(N28), .Z(n190) );
+  HS65_LL_XOR3X9 U276 ( .A(N10), .B(N22), .C(n216), .Z(n217) );
+  HS65_LLS_XOR2X3 U277 ( .A(n176), .B(N34), .Z(n177) );
+  HS65_LLS_XNOR2X3 U278 ( .A(n292), .B(N46), .Z(n189) );
+  HS65_LL_NAND2X4 U279 ( .A(N63), .B(n330), .Z(n214) );
+  HS65_LLS_XOR2X3 U280 ( .A(n181), .B(N43), .Z(n182) );
+  HS65_LL_OAI12X3 U281 ( .A(N94), .B(N72), .C(N49), .Z(n221) );
+  HS65_LLS_XNOR2X3 U282 ( .A(N25), .B(N40), .Z(n292) );
+  HS65_LLS_XNOR2X3 U283 ( .A(N40), .B(N10), .Z(n206) );
+  HS65_LL_IVX7 U284 ( .A(N10), .Z(n290) );
+  HS65_LLS_XOR3X2 U285 ( .A(N22), .B(N13), .C(N31), .Z(n181) );
+  HS65_LLS_XNOR2X6 U286 ( .A(n179), .B(n178), .Z(n256) );
+  HS65_LLS_XNOR2X6 U287 ( .A(N4), .B(n205), .Z(n216) );
+  HS65_LL_IVX18 U289 ( .A(n169), .Z(N2891) );
+  HS65_LL_NOR3AX4 U290 ( .A(n243), .B(n300), .C(n242), .Z(n281) );
+  HS65_LL_CBI4I6X9 U291 ( .A(N88), .B(n234), .C(n314), .D(n235), .Z(n223) );
+  HS65_LLS_XNOR2X6 U292 ( .A(n200), .B(n215), .Z(n291) );
+  HS65_LL_NOR2X2 U293 ( .A(N94), .B(N72), .Z(n213) );
+  HS65_LLS_XNOR2X6 U294 ( .A(N79), .B(n203), .Z(n318) );
+  HS65_LL_NAND3X2 U295 ( .A(N94), .B(N104), .C(n212), .Z(n234) );
+  HS65_LL_OA12X4 U296 ( .A(n234), .B(N91), .C(n314), .Z(n238) );
+  HS65_LL_IVX2 U297 ( .A(n228), .Z(n229) );
+  HS65_LL_IVX2 U298 ( .A(n295), .Z(n296) );
+  HS65_LL_NAND2X2 U299 ( .A(N53), .B(n195), .Z(n180) );
+  HS65_LL_NAND2X2 U300 ( .A(N66), .B(n330), .Z(n208) );
+  HS65_LL_OA112X4 U301 ( .A(n318), .B(n317), .C(n316), .D(n315), .Z(n319) );
+  HS65_LL_IVX2 U302 ( .A(n314), .Z(n316) );
+  HS65_LL_IVX2 U303 ( .A(n320), .Z(n311) );
+  HS65_LL_CBI4I6X2 U304 ( .A(n309), .B(n308), .C(n307), .D(n306), .Z(n310) );
+  HS65_LL_IVX2 U305 ( .A(n248), .Z(n245) );
+  HS65_LL_NAND3X2 U306 ( .A(n241), .B(n308), .C(n240), .Z(n242) );
+  HS65_LL_XOR2X18 U307 ( .A(N37), .B(n280), .Z(N2786) );
+  HS65_LL_XNOR2X18 U308 ( .A(N4), .B(n286), .Z(N2754) );
+  HS65_LL_XNOR2X18 U309 ( .A(N7), .B(n285), .Z(N2755) );
+  HS65_LL_XNOR2X18 U310 ( .A(N1), .B(n288), .Z(N2753) );
+  HS65_LL_XNOR2X18 U311 ( .A(N40), .B(n287), .Z(N2787) );
+  HS65_LL_XNOR2X18 U312 ( .A(N25), .B(n283), .Z(N2783) );
+  HS65_LL_XNOR2X18 U313 ( .A(N43), .B(n284), .Z(N2767) );
+  HS65_LL_XOR2X18 U314 ( .A(N19), .B(n282), .Z(N2781) );
+  HS65_LL_XOR2X18 U315 ( .A(N31), .B(n276), .Z(N2784) );
+  HS65_LL_XOR2X18 U316 ( .A(N16), .B(n278), .Z(N2780) );
+  HS65_LL_XOR2X18 U317 ( .A(N28), .B(n281), .Z(N2762) );
+  HS65_LL_XOR2X18 U318 ( .A(N46), .B(n279), .Z(N2768) );
+  HS65_LL_XOR2X18 U319 ( .A(N13), .B(n277), .Z(N2779) );
+  HS65_LL_XOR2X18 U320 ( .A(N34), .B(n275), .Z(N2785) );
+  HS65_LL_MUXI21X20 U321 ( .D0(n290), .D1(N10), .S0(n289), .Z(N2756) );
+  HS65_LL_NAND2X14 U322 ( .A(n170), .B(n171), .Z(N2782) );
+  HS65_LL_IVX2 U323 ( .A(n325), .Z(n172) );
+  HS65_LL_IVX2 U324 ( .A(N22), .Z(n326) );
+  HS65_LL_MUXI21X2 U325 ( .D0(n299), .D1(n298), .S0(n297), .Z(n335) );
+  HS65_LL_NAND2X2 U326 ( .A(N49), .B(n195), .Z(n196) );
+  HS65_LL_IVX2 U327 ( .A(n328), .Z(n331) );
+  HS65_LL_IVX9 U328 ( .A(N104), .Z(n330) );
+  HS65_LL_NOR2X6 U329 ( .A(N99), .B(n330), .Z(n274) );
+  HS65_LL_MUXI21X2 U330 ( .D0(n326), .D1(N22), .S0(N16), .Z(n176) );
+  HS65_LLS_XNOR2X6 U331 ( .A(N43), .B(N28), .Z(n199) );
+  HS65_LLS_XNOR2X6 U332 ( .A(N82), .B(n185), .Z(n230) );
+  HS65_LLS_XNOR2X6 U333 ( .A(N85), .B(n186), .Z(n228) );
+  HS65_LL_AND2X4 U334 ( .A(N56), .B(n204), .Z(n194) );
+  HS65_LL_MUXI21X2 U335 ( .D0(n290), .D1(N10), .S0(N19), .Z(n188) );
+  HS65_LLS_XNOR2X6 U336 ( .A(n192), .B(n191), .Z(n259) );
+  HS65_LLS_XNOR2X6 U337 ( .A(n194), .B(n193), .Z(n224) );
+  HS65_LLS_XNOR2X6 U338 ( .A(N16), .B(N13), .Z(n197) );
+  HS65_LLS_XNOR3X2 U339 ( .A(N34), .B(N31), .C(N37), .Z(n200) );
+  HS65_LLS_XNOR2X6 U340 ( .A(N46), .B(n199), .Z(n215) );
+  HS65_LL_NOR2X6 U341 ( .A(n241), .B(n318), .Z(n317) );
+  HS65_LLS_XNOR2X6 U342 ( .A(N1), .B(N7), .Z(n205) );
+  HS65_LLS_XNOR2X6 U343 ( .A(n211), .B(n210), .Z(n301) );
+  HS65_LL_NOR2AX3 U344 ( .A(N53), .B(n213), .Z(n305) );
+  HS65_LLS_XOR3X2 U345 ( .A(n215), .B(N25), .C(n214), .Z(n219) );
+  HS65_LLS_XOR2X6 U346 ( .A(n218), .B(n217), .Z(n328) );
+  HS65_LL_NOR3X4 U347 ( .A(n244), .B(n323), .C(n231), .Z(n325) );
+  HS65_LL_AND2X4 U348 ( .A(n241), .B(n309), .Z(n246) );
+  HS65_LL_NOR3X4 U349 ( .A(n318), .B(n300), .C(n250), .Z(n279) );
+  HS65_LL_NOR2AX6 U350 ( .A(n236), .B(n304), .Z(n307) );
+  HS65_LL_NAND4ABX3 U351 ( .A(n244), .B(n300), .C(n317), .D(n243), .Z(n284) );
+  HS65_LL_NAND4ABX6 U352 ( .A(n279), .B(n253), .C(n252), .D(n283), .Z(n293) );
+  HS65_LL_NOR2X13 U353 ( .A(n327), .B(n293), .Z(n321) );
+  HS65_LLS_XOR2X6 U354 ( .A(n268), .B(n267), .Z(n269) );
+  HS65_LL_NOR2X25 U355 ( .A(n274), .B(n269), .Z(N2888) );
+  HS65_LL_AND2X4 U356 ( .A(N66), .B(N91), .Z(n298) );
+  HS65_LL_MUXI21X2 U357 ( .D0(n298), .D1(n294), .S0(n330), .Z(n299) );
+  HS65_LL_AOI12X2 U358 ( .A(N91), .B(n296), .C(n330), .Z(n297) );
+  HS65_LL_AND2X4 U359 ( .A(n307), .B(n302), .Z(n315) );
+  HS65_LL_CBI4I6X5 U360 ( .A(n320), .B(n313), .C(n315), .D(n312), .Z(n324) );
+  HS65_LL_AOI12X2 U361 ( .A(n320), .B(n319), .C(N104), .Z(n322) );
+  HS65_LL_MUXI21X2 U362 ( .D0(n328), .D1(n331), .S0(n327), .Z(n329) );
+  HS65_LL_AND2X4 U363 ( .A(N63), .B(N88), .Z(n333) );
+  HS65_LL_MUXI21X2 U364 ( .D0(n329), .D1(n333), .S0(N104), .Z(n334) );
+  HS65_LL_AOI12X2 U365 ( .A(N88), .B(n331), .C(n330), .Z(n332) );
+  HS65_LL_NOR3AX13 U189 ( .A(n227), .B(n224), .C(n240), .Z(n289) );
+  HS65_LL_NOR2X19 U186 ( .A(n274), .B(n263), .Z(N2887) );
+  HS65_LL_NOR2X2 U215 ( .A(N104), .B(N72), .Z(n195) );
+  HS65_LL_NAND3X2 U225 ( .A(N69), .B(N60), .C(n330), .Z(n187) );
+  HS65_LL_IVX2 U227 ( .A(n291), .Z(n201) );
+  HS65_LL_NAND2X4 U288 ( .A(n320), .B(n223), .Z(n231) );
+  HS65_LL_NOR2X19 U176 ( .A(n274), .B(n266), .Z(N2886) );
+  HS65_LL_NOR2X19 U177 ( .A(n274), .B(n260), .Z(N2890) );
+  HS65_LL_NOR2X19 U178 ( .A(n274), .B(n257), .Z(N2889) );
+  HS65_LL_NOR2X19 U187 ( .A(n274), .B(n273), .Z(N2899) );
+  HS65_LLS_XNOR2X3 U201 ( .A(n295), .B(n293), .Z(n294) );
+  HS65_LL_NOR2X2 U241 ( .A(n247), .B(n248), .Z(n275) );
+endmodule
+
