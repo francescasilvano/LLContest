@@ -11,58 +11,89 @@ proc dualVth {args} {
    		return
   	}
 	#take the critical path
-    set critical_path [get_timing_paths]
-    set slack [get_attribute $critical_path slack] 
-    while {$slack > $allowed_slack } {
-	set cells_critical_path [get_attribute $critical_path points]
-	set objs ""
-	foreach_in_collection point $cells_critical_path {
-        set objs [linsert $objs 0 [get_attribute $point object]]
-	}
-    set cells [get_cells -of_objects $objs]
-    set cell_leackage ""
-    set cell_can_be_substitute [get_cells]
-    #set cells_name ""
-    #foreach cell $cell_can_substitute {
-    #    set cells_name [linsert $cells_name 0 [get_attribute $cell ref_name]]
-    #    puts $cells_name
-    #}
-    #set first [lindex $cells_name 0]
-    puts " Worst path"
-    foreach_in_collection cell $cells {
-        set name [get_attribute $cell ref_name]
-        puts $name
-        #set result [lsearch $cells_name $name]
-        #puts $result
-        if { [regexp {^HS65_([A-Z]+)_([A-Z0-9]+)X([0-9]*)$} [string trim $name] matchVar dual function dimension] == 1} {
-            set leackage [get_attribute $cell leackage_power]
-            puts $name $leackage 
-            lappend cell_leackage [list $name $leackage]
+	set wrt_path_collection [get_timing_paths] ; # collection of timing paths - size 1
+	set flag 1
+  	while {$flag} {
+
+        set leakage_power_swap 0
+
+        # per ogni path prendo ogni singolo timing point, poi prendo il nome della cella 
+        # e da esso mi estraggo le cella che andrò a modificare
+        foreach_in_collection timing_point [get_attribute $wrt_path_collection points] { ;# scan the collection of timing points belonging to the path
+        
+            set cell_name [get_attribute [get_attribute $timing_point object] full_name] ;# for each timing point we can extract multiple attributes (e.g. arrival time)
+            # set arrival [get_attribute $timing_point arrival]
+            #puts "$cell_name -> $arrival"
+
+            # controlla se è una cella [<cell_name>/<A\B\Z\>]
+            # set isMatch [regexp {^([A-Z0-9]+)/[A-Z]$} $cell_name matchVar name]
+            # puts "$matchVar - $cell_name -  $name - $isMatch"
+            if {[regexp {^([A-Z0-9]+)/[AB]$} $cell_name matchVar name] == 1} {
+                set cell [get_cell  $name]
+            
+                if { [regexp {^HS65_([A-Z]+)_[A-Z0-9]+X[0-9]*$} [get_attribute $cell ref_name] matchVar dual] == 1} {
+                
+                    set leakage_power [get_attribute $cell leakage_power]
+
+                    # puts "$cell_name - $leakage_power - [get_attribute $cell ref_name] - $dual"
+
+                    if { $dual == "LL" || $dual == "LLS"} {
+                        if {$leakage_power > $leakage_power_swap} {
+                            set cell_to_swap $cell
+                            set leakage_power_swap $leakage_power
+                        }
+                    }
+                }
+            }
+        }
+
+        set ref_name [get_attribute $cell_to_swap ref_name]
+        set dimension_end 255
+        set newcell 0
+        if { [regexp {^HS65_([A-Z]+)_([A-Z0-9]+)X([0-9]*)$} $ref_name matchVar dual function dimension] == 1} {
+            # puts "$ref_name => $dual - $function - $dimension"
+
+            if { $dual == "LL"} {
+                foreach_in_collection alt_cell [get_alternative_lib_cells $cell_to_swap] {
+                    if {[regexp {^CORE65LPHVT/HS65_LH_([A-Z0-9]+)X([0-9]+)$} [get_attribute $alt_cell full_name] matchVar new_function dimension_app] == 1} {
+                        # puts "[get_attribute $alt_cell full_name] => $dimension_app"
+                        # puts "$matchVar => $function - $new_function => $dimension_app"
+                        if {$function == $new_function && $dimension_app > $dimension && $dimension_app < $dimension_end} {
+                            set newcell $matchVar
+                            set dimension_end $dimension
+                        }
+                    }    
+                } 
+            } elseif { $dual == "LLS"} {
+                foreach_in_collection alt_cell [get_alternative_lib_cells $cell_to_swap] {
+                    if {[regexp {^CORE65LPHVT/HS65_LHS_([A-Z0-9]+)X([0-9]+)$} [get_attribute $alt_cell full_name] matchVar new_function dimension_app] == 1} {
+                        # puts "[get_attribute $alt_cell full_name] => $dimension_app"
+                        # puts "$matchVar => $function - $new_function => $dimension_app"
+                        if {$function == $new_function && $dimension_app > $dimension && $dimension_app < $dimension_end} {
+                            set newcell $matchVar
+                            set dimension_end $dimension
+                        }
+                    } 
+                }
+            } 
+
+            # se la cella non può essere sostituita
+            set lib_cell_name [get_attribute [get_lib_cells -of_object $cell_to_swap] full_name]
+            # puts "FIRST: $lib_cell_name -- THEN: $newcell => [get_attribute $cell_to_swap full_name]"
+            if { $newcell != 0} {
+                size_cell $cell_to_swap $newcell
+                set wrt_path_collection [get_timing_paths] 
+                if { [get_attribute [get_timing_paths] slack] < $allowed_slack} {
+                    set flag 0
+                    size_cell $cell_to_swap $lib_cell_name
+                } else {
+                    puts [get_attribute $wrt_path_collection slack]
+                }
+            } else {
+                set flag 0
+            }
         }
     }
-    puts $cell_leackage
-	#order list
-	#prendo una lista a parte la ordino lista fatta da ogni cella e la leackage_power
-	lsort -index 1 -decreasing $cell_leackage
-    #take the first element 
-    set cell_swap [lindex [lindex $cell_leackage 0] 0]
-    puts $cell_swap
-    set critical_path [get_timing_paths]
-    set slack [get_attribute $path slack] 
-    }
-	################### IMPORTANT
-	#reducing the sizing the power consumption decrease but the delay increase
-	#changing from lvt->hvt reducing th leackage power consumption and increase the delay
-	# control the slack 
-	#take the best path
-	#set paths [get_path_groups]
-	#set bestpaths ""
-	#foreach path $paths {
-	#	lappend bestpaths [list $path [get_attribute time_lent_to_startpoint]]
-	#}
-	#lsort -index 1 $bestpaths
-	#set element [lindex $bestpaths 0]
-	#set bestpath [lindex $element 0]
 	return
 }
 define_proc_attributes dualVth \
@@ -71,3 +102,4 @@ define_proc_attributes dualVth \
 {
 	{-allowed_slack "allowed slack after the optimization (valid range [-OO, 0])" value float required}
 }
+
